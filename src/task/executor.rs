@@ -4,7 +4,6 @@ use core::task::{Context, Poll, Waker};
 use crossbeam_queue::ArrayQueue;
 use x86_64::instructions::interrupts::{self, enable_and_hlt};
 
-
 pub struct Executor {
     tasks: BTreeMap<TaskId, Task>,
     task_queue: Arc<ArrayQueue<TaskId>>,
@@ -36,13 +35,15 @@ impl Executor {
     }
 
     fn run_ready_tasks(&mut self) {
-
         while let Some(task_id) = self.task_queue.pop() {
             let task = match self.tasks.get_mut(&task_id) {
                 Some(task) => task,
                 None => continue, // task no longer exists
             };
-            let waker = self.waker_cache.entry(task_id).or_insert_with(|| TaskWaker::new(task_id, self.task_queue.clone()));
+            let waker = self
+                .waker_cache
+                .entry(task_id)
+                .or_insert_with(|| TaskWaker::new(task_id, self.task_queue.clone()));
             let mut context = Context::from_waker(waker);
             match task.poll(&mut context) {
                 Poll::Ready(()) => {
@@ -56,7 +57,6 @@ impl Executor {
     }
 
     fn sleep_if_idle(&self) {
-        
         interrupts::disable();
         if self.task_queue.is_empty() {
             enable_and_hlt();

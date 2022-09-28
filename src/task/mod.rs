@@ -1,6 +1,6 @@
 use alloc::boxed::Box;
 use core::{
-    future::{Future},
+    future::Future,
     pin::Pin,
     sync::atomic::{AtomicU64, Ordering},
     task::{Context, Poll},
