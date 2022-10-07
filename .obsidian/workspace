@@ -4,14 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "8568064e71397abd",
+        "id": "e826175514f01019",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "README.md",
-            "mode": "source"
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -68,7 +65,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,8 +82,9 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "8568064e71397abd",
+  "active": "e826175514f01019",
   "lastOpenFiles": [
+    "Untitled.md",
     "README.md"
   ]
 }
